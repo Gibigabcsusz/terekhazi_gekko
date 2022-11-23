@@ -1,0 +1,102 @@
+% pdf/a 
+\begin{filecontents*}[overwrite]{\jobname.xmpdata}
+    \Title{}
+    \Author{Gekkó csapat: Bak Bálint, Kozma Dávid Márk, Szilágyi Gábor}
+    \Language{hu-HU}
+    \Subject{Elektromágneses Terek házi feladat: Föld alatti fémkeresés örvényáramú vizsgálattal}
+    \Keywords{EM szimuláció, végeselem, MATLAB, pdetool, házi feladat}
+    \Publisher{Gekkó csapat}
+\end{filecontents*}
+
+\documentclass[a4paper,12pt,oneside]{article}
+\usepackage{ucs}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[magyar]{babel}
+\usepackage{amsfonts}
+\usepackage{amsmath,bm}
+\usepackage{pdfpages}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage[hang]{caption}
+%\usepackage{subcaption}
+%\usepackage{enumerate}
+%\usepackage{psfrag}
+\usepackage[left=10mm,right=10mm,top=10mm,bottom=10mm]{geometry}
+\usepackage{hyperref}
+%\usepackage{listings}
+%\usepackage{cite}
+%\usepackage{csquotes}
+\usepackage[range-phrase=--, range-units=single]{siunitx}
+\usepackage{xcolor}
+\usepackage[a-3u]{pdfx}
+\hypersetup{
+    colorlinks,
+%    linkcolor={red!50!black},
+    linkcolor={black},
+%    citecolor={blue!50!black},
+    citecolor={black},
+%    urlcolor={blue!80!black}
+    urlcolor={blue!80!black}
+}
+
+\sloppy % Margón túllógó sorok tiltása.
+\widowpenalty=10000 \clubpenalty=10000 %A fattyú- és árvasorok elkerülése
+\def\hyph{-\penalty0\hskip0pt\relax} % Kötőjeles szavak elválasztásának engedélyezése
+
+\pagestyle{plain} 
+\pagenumbering{gobble}
+\nopagebreak
+
+\title{
+    \centering
+    \vspace{-0.8cm}
+    \includegraphics[width=0.3\textwidth]{bme_logo.pdf} \\
+    \textbf{Elektromágneses Terek (VIHVMA08)\\
+    csoportos házi feladat} \\[2ex]
+    Föld alatti fémkeresés örvényáramú vizsgálattal
+    \vspace{0.1cm}
+}
+
+%\parskip=10pt
+%\parindent=0pt
+
+\newcommand\adj[1]{#1^{\mathrm{H}}}
+
+\author{\emph{\textbf{Gekkó}} csapat:~Bak Bálint,~Kozma Dávid Márk,~Szilágyi Gábor \\[2ex]
+    Konzulens: Dr. Pávó József}
+\date{Budapest, \today}
+
+
+\begin{document}
+    \maketitle
+%   
+    \input{bevezetes.tex}
+    \input{balint.tex}
+    \input{mark.tex}
+    \input{gabor.tex}
+    \includepdf{feladatlap_femkereses.pdf}
+%
+\end{document}
+
+%            \begin{figure}
+%                \centering
+%                \includegraphics[width=0.8\textwidth]{kep/szerkesztett/wstk-mighty-gecko-nagy.jpg}
+%                \caption{WSTK + radio board.}
+%                \label{fig:wstkmighty}
+%            \end{figure}
+% \cite{Anritsu}
+%            \begin{figure}
+%                \centering
+%                \begin{subfigure}{0.48\textwidth}
+%                    \includegraphics[width=\textwidth]{kep/szerkesztett/sol-868-conducted.png}
+%                    \caption{\SI{868}{MHz}}
+%                \end{subfigure}
+%                \begin{subfigure}{0.48\textwidth}
+%                    \includegraphics[width=\textwidth]{kep/szerkesztett/sol-470-conducted.png}
+%                    \caption{\SI{470}{MHz}}
+%                \end{subfigure}
+%                \caption{470 és \SI{868}{MHz}-es Sol radio board-ok kimeneti spektruma.}
+%                \label{fig:sol-conducted}
+%            \end{figure}
+
