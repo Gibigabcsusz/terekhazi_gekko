@@ -1,4 +1,17 @@
 \section{Szilágyi Gábor szekciója}
-Szeretném én az egyenletek rendezgetését MATLAB-ba tuszakolását megsinálni.
+Szeretném én az egyenletek rendezgetését MATLAB-ba tuszakolását megcsinálni.
 
+A feladat megoldásához az $\vec{A}-\Phi, \vec{A}$ formalizmust használjuk, mert az előadáson bemutatott indukciós főzőlapos példa alapján ezzel a megközelítéssel egy jól kezelhető parciális differenciálegyenlet-rendszert kapunk, amit a PDEtool segítségével megoldhatunk.
+\begin{align}
+    \vec{B} = \rot \vec{A}
+\end{align}
 
+A peremfeltételekről a következőket lehet tudni:
+\begin{align}
+    B_n(\vec{r}) &= 0, \quad \vec{r} \in \Gamma_Z\\
+    B_n(\vec{r}) &= 0, \quad \vec{r} \in \Gamma_L \cup \Gamma_T
+\end{align}
+A $B_n$ normális mágneses indukció a $\Gamma_Z$ peremen a szimmetria miatt lesz 0, a $\Gamma_L \cup \Gamma_T$ távoli peremeken pedig a relatíve nagy távolság miatt.
+% \begin{itemize}
+    % \item A $\Gamma_Z$ peremeken $\vec{J}_n=0$ és $B_n=0$ a hengerszimmetria miatt.
+% \end{itemize}

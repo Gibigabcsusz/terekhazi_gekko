@@ -1,5 +1,5 @@
 \section{Bevezetés}
-    A feladatkiírásban felvázolt probléma egy forgásszimmetrikus elrendezés, emiatt \aref{fig:elrendezes_2d}. ábrán látható fél-síkmetszet vizsgálata elég a probléma megoldásához.\\[1ex]
+    A feladatkiírásban felvázolt probléma egy forgásszimmetrikus elrendezés, emiatt \aref{fig:elrendezes_2d}. ábrán látható fél-síkmetszet vizsgálata elég a probléma megoldásához.
 
     \begin{wrapfigure}{L}{0.35\textwidth}
         \centering
@@ -8,22 +8,17 @@
         \label{fig:elrendezes_2d}
     \end{wrapfigure}
 
- A tartományok és határfelületek (határvonalak) jelentése:
-    \begin{itemize}
-        \item[$\Omega_1$] -- vasgömb
-        \item[$\Omega_2$] -- talaj
-        \item[$\Omega_3$] -- levegő
-        \item[$\Omega_4$] -- tekercs
-        \item[$\Gamma_Z$] -- szimmetriatengely
-        \item[$\Gamma_L$] -- vizsgált levegővel kitöltött térrész határa
-        \item[$\Gamma_T$] -- vizsgált talajjal kitöltött térrész határa
-    \end{itemize}
-
-    Mivel csak egy adott $\omega$ körfrekvencián kell vizsgálódnunk, emiatt elég a szinuszos állandósult állapottal foglalkoznunk.
     \begin{align}
-        \dfrac{\partial \vec{B}}{\partial t} \quad&\longrightarrow\quad j\omega\vec{B}
+        \dfrac{\partial}{\partial \varphi} = 0
     \end{align}
-    A kérdéses $\omega$ körfrekvencián az elektromágneses hullámok szabadtéri hullámhossza (mert $\epsilon_r = 1$):
+    
+    A tartományok jelentése: $\Omega_1$ -- vasgömb, $\Omega_2$ -- talaj, $\Omega_3$ -- levegő, $\Omega_4$ -- tekercs.
+
+    Mivel csak egy adott $\omega$ körfrekvencián kell vizsgálódnunk, emiatt elég a szinuszos állandósult állapottal foglalkoznunk:
+    \begin{align}
+        \dfrac{\partial}{\partial t} \quad&\longrightarrow\quad j\omega
+    \end{align}
+    A kérdéses $\omega$ körfrekvencián az elektromágneses hullámok szabadtéri hullámhossza ($\varepsilon_r = 1$):
     \begin{align}
         \lambda &= \dfrac{c}{f} = \dfrac{c}{\dfrac{\omega}{2\pi}} = \dfrac{\qty{3e8}{\metre\per\second}}{\dfrac{2\pi\qty{500}{\per\second}}{2\pi}} = \qty{6e5}{\metre}
     \end{align}
