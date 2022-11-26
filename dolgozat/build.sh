@@ -31,9 +31,9 @@ fi
 if [ -e pdfa.xmpi ]; then
 	rm pdfa.xmpi
 fi
-# if [ -e tartalom/*.aux ]; then
-# 	rm tartalom/*.aux
-# fi
+if [ -e tartalom/*.aux ]; then
+	rm tartalom/*.aux
+fi
 
 #rm $cim.aux $cim.bbl $cim.blg $cim.out $cim.log $cim.toc
 #rm tartalom/*.aux
