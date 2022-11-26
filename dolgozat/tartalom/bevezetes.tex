@@ -1,2 +1,38 @@
 \section{Bevezetés}
-    bevezető dolgok
+    A feladatkiírásban felvázolt probléma egy forgásszimmetrikus elrendezés, emiatt \aref{fig:elrendezes_2d}. ábrán látható fél-síkmetszet vizsgálata elég a probléma megoldásához.
+
+    \begin{wrapfigure}{L}{0.3\textwidth}
+        \centering
+        \includegraphics[width=0.3\textwidth]{elrendezes_2d.pdf}
+        \caption{A szimulált elrendezés.}
+        \label{fig:elrendezes_2d}
+    \end{wrapfigure}
+
+    \begin{align}
+        \Omega &= \Omega_1 \cup \Omega_2 \cup \Omega_3 \cup \Omega_4 \\
+        \Gamma &= \Gamma_Z \cup \Gamma_T \\
+        \sigma(\mathbf{r}) &=
+            \begin{cases}
+                \sigma_v, & \text{ha } \mathbf{r} \in \Omega_1\\
+                \sigma_t, & \text{ha } \mathbf{r} \in \Omega_2\\
+                0, & \text{ha } \mathbf{r} \in \Omega_3 \cup \Omega_4
+            \end{cases}
+    \end{align}
+
+    A feladat alapvetően egy magneto-kvázistacionárius, vagyis örvényáramú probléma. Ezen kívül csak egy adott $\omega$ körfrekvencián kell vizsgálódnunk, emiatt elég a szinuszos állandósult állapottal foglalkoznunk.
+    \begin{align}
+        \dfrac{\partial \mathbf{D}}{\partial t} &\longrightarrow 0\\
+        \dfrac{\partial \mathbf{B}}{\partial t} &\longrightarrow j\omega\mathbf{B}
+    \end{align}
+    Ebben az esetben a vizsgált tartományon belül a Maxwell-egyenleteknek a következő alakja érvényes:
+    \begin{align}
+        \rot \mathbf{H} &= \mathbf{J} \\
+        \rot \mathbf{E} &= -j\omega\mathbf{B}\\
+        \divergence \mathbf{B} &= 0\\
+        \mathbf{B} &= \mu\mathbf{H}\\
+        \mathbf{J} &= \sigma \mathbf{E} + \mathbf{J}_i
+    \end{align}
+
+    Az $R$ sugarat megfelelően nagyra kell választani ahhoz, hogy a vizsgált tartományban kialakuló teret ne befolyásolja jelentősen a vizsgált $\Omega$ tartomány $\Gamma_T$ ,,távoli'' peremének a közelsége.
+    
+    \lipsum[1]

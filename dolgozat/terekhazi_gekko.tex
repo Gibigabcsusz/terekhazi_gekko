@@ -19,6 +19,8 @@
 \usepackage{amssymb}
 \usepackage{graphicx}
 \usepackage[hang]{caption}
+\usepackage{lipsum}
+\usepackage{wrapfig}
 %\usepackage{subcaption}
 %\usepackage{enumerate}
 %\usepackage{psfrag}
@@ -44,6 +46,12 @@
 \widowpenalty=10000 \clubpenalty=10000 %A fattyú- és árvasorok elkerülése
 \def\hyph{-\penalty0\hskip0pt\relax} % Kötőjeles szavak elválasztásának engedélyezése
 
+\graphicspath{{kep/}} % ebben a könyvtárban keres képet
+\frenchspacing
+
+\DeclareMathOperator{\rot}{rot}
+\DeclareMathOperator{\divergence}{div}
+
 \pagestyle{plain} 
 \pagenumbering{gobble}
 \nopagebreak
@@ -51,15 +59,15 @@
 \title{
     \centering
     \vspace{-0.8cm}
-    \includegraphics[width=0.3\textwidth]{kep/bme_logo.pdf} \\
+    \includegraphics[width=0.3\textwidth]{bme_logo.pdf} \\
     \textbf{Elektromágneses Terek (VIHVMA08)\\
     csoportos házi feladat} \\[2ex]
     Föld alatti fémkeresés örvényáramú vizsgálattal
     \vspace{0.1cm}
 }
 
-%\parskip=10pt
-%\parindent=0pt
+% \parskip=10pt
+% \parindent=0pt
 
 \newcommand\adj[1]{#1^{\mathrm{H}}}
 
