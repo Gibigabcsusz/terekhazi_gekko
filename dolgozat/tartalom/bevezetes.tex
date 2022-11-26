@@ -1,19 +1,28 @@
 \section{Bevezetés}
-    A feladatkiírásban felvázolt probléma egy forgásszimmetrikus elrendezés, emiatt \aref{fig:elrendezes_2d}. ábrán látható fél-síkmetszet vizsgálata elég a probléma megoldásához.
+    A feladatkiírásban felvázolt probléma egy forgásszimmetrikus elrendezés, emiatt \aref{fig:elrendezes_2d}. ábrán látható fél-síkmetszet vizsgálata elég a probléma megoldásához.\\[1ex]
 
-    \begin{wrapfigure}{L}{0.3\textwidth}
+    \begin{wrapfigure}{L}{0.35\textwidth}
         \centering
-        \includegraphics[width=0.3\textwidth]{elrendezes_2d.pdf}
+        \includegraphics[width=0.9\linewidth]{elrendezes_2d.pdf}
         \caption{A szimulált elrendezés.}
         \label{fig:elrendezes_2d}
     \end{wrapfigure}
 
+ A tartományok és határfelületek (határvonalak) jelentése:
+    \begin{itemize}
+        \item[$\Omega_1$] -- vasgömb
+        \item[$\Omega_2$] -- talaj
+        \item[$\Omega_3$] -- levegő
+        \item[$\Omega_4$] -- tekercs
+        \item[$\Gamma_Z$] -- szimmetriatengely
+        \item[$\Gamma_L$] -- vizsgált levegővel kitöltött térrész határa
+        \item[$\Gamma_T$] -- vizsgált talajjal kitöltött térrész határa
+    \end{itemize}
+
     \begin{align}
-        \Omega &= \Omega_1 \cup \Omega_2 \cup \Omega_3 \cup \Omega_4 \\
-        \Gamma &= \Gamma_Z \cup \Gamma_T \\
         \sigma(\mathbf{r}) &=
             \begin{cases}
-                \sigma_v, & \text{ha } \mathbf{r} \in \Omega_1\\
+                \sigma, & \text{ha } \mathbf{r} \in \Omega_1\\
                 \sigma_t, & \text{ha } \mathbf{r} \in \Omega_2\\
                 0, & \text{ha } \mathbf{r} \in \Omega_3 \cup \Omega_4
             \end{cases}
@@ -21,9 +30,12 @@
 
     A feladat alapvetően egy magneto-kvázistacionárius, vagyis örvényáramú probléma. Ezen kívül csak egy adott $\omega$ körfrekvencián kell vizsgálódnunk, emiatt elég a szinuszos állandósult állapottal foglalkoznunk.
     \begin{align}
-        \dfrac{\partial \mathbf{D}}{\partial t} &\longrightarrow 0\\
-        \dfrac{\partial \mathbf{B}}{\partial t} &\longrightarrow j\omega\mathbf{B}
+        \dfrac{\partial \mathbf{D}}{\partial t} \quad&\longrightarrow\quad 0\\
+        \dfrac{\partial \mathbf{B}}{\partial t} \quad&\longrightarrow\quad j\omega\mathbf{B}
     \end{align}
+
+    \clearpage
+
     Ebben az esetben a vizsgált tartományon belül a Maxwell-egyenleteknek a következő alakja érvényes:
     \begin{align}
         \rot \mathbf{H} &= \mathbf{J} \\
@@ -32,7 +44,5 @@
         \mathbf{B} &= \mu\mathbf{H}\\
         \mathbf{J} &= \sigma \mathbf{E} + \mathbf{J}_i
     \end{align}
-
     Az $R$ sugarat megfelelően nagyra kell választani ahhoz, hogy a vizsgált tartományban kialakuló teret ne befolyásolja jelentősen a vizsgált $\Omega$ tartomány $\Gamma_T$ ,,távoli'' peremének a közelsége.
     
-    \lipsum[1]
