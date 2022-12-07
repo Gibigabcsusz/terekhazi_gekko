@@ -1,3 +1,39 @@
-\section{Kozma Dávid Márk szekciója}
-    dolgok
-    elso probalkozas
+\section{Impedancia kiszámítása $rA_{\varphi}$ értékekből}
+
+
+A fluxusból tudunk következtetni a tekercs impedanciájára. A tekercs fluxusát
+egyszerűen ki lehet számolni a PDE megoldásának eredményeként kapott háromszögekből.\\
+
+Egy menetre számított fluxus számítása:
+
+\begin{align}
+    \psi \triangleq \int_{s}^{}  \vec{B} \,ds
+    \rightarrow  \psi = \int_{s} rot(\vec{A}) \,ds
+    = \oint_L \vec{A} \,dl
+\end{align}
+
+Ebből már meg tudjuk határozni, hogy a teljes tekercs fluxusát, amihez tudni kell még a
+tekercs menetszámát(N) és a tekercs keresztmetsztét (F) amit a feladat meg adott.
+
+Tekercs Fluxus számítása:
+\begin{align}
+    \psi = \sum_{k = 1}^{N}  \psi_k = \sum_{k = 1}^{N} \oint_{L_k} \vec{A} \,dl
+    = \sum_{k = 1}^{N} 2 \pi r_k A_{\varphi,k}
+\end{align}
+
+A tekercs homogenizálásával számítható tekercs fluxus:
+\begin{align}
+    \psi = \frac{1}{\Delta} \sum_{k=1}^N  2 \pi r_k A_{\varphi,k} \Delta F \approx
+    \frac{N}{F} \int_{F} 2 \pi r_k A_{\varphi,k} \,dF
+\end{align}
+
+az integrál egyszerűen közelíthatő a PDE megoldásából, a háromszöghálóra felírt
+integrál közelítő összeggel.
+
+A kiszámított fluxusból már egyszrűen számítható a tekercs ön és kölcsönös indukciója is.
+\begin{align}
+    \psi = Z_1 I_1 + Z_2 I_2 \\
+    Z_1 = \frac{\psi}{I_1}   \\
+    Z_2 = \frac{\psi}{I_2}
+\end{align}
+
