@@ -60,41 +60,16 @@ Tekercs impedanciája gömb nélkül: Z0 = 0.0000e+00 + 1.2193e+03i\\
 Tekercs impedanciája gömbbel:\\
 \begin{tabular}{|c|c|c|c|}
     \hline
-    r[m]\d[m] & 0.08                     & 0.13                     & 0.18                     \\
+    \diagbox{r[m]}{d[m]} & 0.08                     & 0.13                     & 0.18                     \\
     \hline
     \hline
-    0.01      &                          & 5.4073e-03 + 1.2192e+03j &                          \\
+    0.01                 &                          & 5.4073e-03 + 1.2192e+03j &                          \\
     \hline
-    0.03      & 6.5651e-01 + 1.2163e+03j & 7.9215e-02 + 1.2189e+03j & 1.4745e-02 + 1.2192e+03j \\
+    0.03                 & 6.5651e-01 + 1.2163e+03j & 7.9215e-02 + 1.2189e+03j & 1.4745e-02 + 1.2192e+03j \\
     \hline
-    0.05      &                          & 3.1053e-01 + 1.2171e+03j &                          \\
+    0.05                 &                          & 3.1053e-01 + 1.2171e+03j &                          \\
     \hline
-\end{tabular}
-
-Tekercs impedanciája gömbbel:\\
-átmérő: 0.03 \\
-távolság: -0.10 \\
-Z = 7.9215e-02 + 1.2189e+03i\\
-
-Tekercs impedanciája gömbbel:\\
-átmérő: 0.03 \\
-távolság: -0.05 \\
-Z = 6.5651e-01 + 1.2163e+03i\\
-
-Tekercs impedanciája gömbbel:\\
-átmérő: 0.03 \\
-távolság: -0.15 \\
-Z = 1.4745e-02 + 1.2192e+03i \\
-
-Tekercs impedanciája gömbbel:\\
-átmérő: 0.01 \\
-távolság: -0.10 \\
-Z = 5.4073e-03 + 1.2192e+03i \\
-
-Tekercs impedanciája gömbbel:\\
-átmérő: 0.05 \\
-távolság: -0.10 \\
-Z = 3.1053e-01 + 1.2171e+03i \\
+\end{tabular}\\
 
 A távolság csökentésével illetve a gömb átmérő csökkentésével csökken az impedancia reális
 része míg a komplex szinte változatlan marad. Azaz a tekercsnek a gömb megjelenésével
@@ -110,32 +85,19 @@ Levegő PDE : c = 1./x./(4*pi*1e-7) ; a = 0.0; f = 0; ELIPTIC \\
 Föld PDE:    c = 1./x./(4*pi*1e-7) ; a = j*2*pi*500./x*1; f = 0; ELIPTIC \\
 Gömb PDE:    c = 1./x./(4*pi*1e-7) ; a = j*2*pi*500*35e6./x; f = 0; ELIPTIC \\
 
-Tekercs impedanciája gömb nélkül:\\
-Z0 = 6.6401e-04 + 1.2193e+03i\\
+Tekercs impedanciája gömb nélkül: Z0 = 6.6401e-04 + 1.2193e+03i\\
 
-Tekercs impedanciája gömbbel:\\
-átmérő: 0.03 \\
-távolság: -0.10 \\
-Z = 7.9866e-02 + 1.2189e+03i\\
-
-Tekercs impedanciája gömbbel:\\
-átmérő: 0.03 \\
-távolság: -0.05 \\
-Z = 6.5713e-01 + 1.2163e+03i\\
-
-Tekercs impedanciája gömbbel:\\
-átmérő: 0.03 \\
-távolság: -0.15 \\
-Z =  1.5405e-02 + 1.2192e+03i\\
-
-Tekercs impedanciája gömbbel:\\
-átmérő: 0.01 \\
-távolság: -0.10 \\
-Z = 6.0710e-03 + 1.2192e+03i \\
-
-Tekercs impedanciája gömbbel:\\
-átmérő: 0.05 \\
-távolság: -0.10 \\
-Z =  3.1112e-01 + 1.2171e+03i\\
+\begin{tabular}{|c|c|c|c|}
+    \hline
+    \diagbox{r[m]}{d[m]} & 0.08                     & 0.13                     & 0.18                     \\
+    \hline
+    \hline
+    0.01                 &                          & 6.0710e-03 + 1.2192e+03j &                          \\
+    \hline
+    0.03                 & 6.5713e-01 + 1.2163e+03j & 7.9866e-02 + 1.2189e+03j & 1.5405e-02 + 1.2192e+03j \\
+    \hline
+    0.05                 &                          & 3.1112e-01 + 1.2171e+03j &                          \\
+    \hline
+\end{tabular}\\
 
 A tapasztalat szinte ugyan az mint amikor a földet szigetelőnek tekintjük azzal a különbséggel, hogy a már a gömbnélkül is van reális része az impedanciának.

@@ -20,7 +20,8 @@ pdetool('gridon','on');
 % Geometry description:
 pderect([0.050000000000000003 0.070000000000000007 0.059999999999999998 0.029999999999999999],'SQ1');
 pderect([0 0.5 0 -0.5],'SQ2');
-pdecirc(0,-0.10000000000000001,0.029999999999999999,'C1');
+%circle setup h   r
+pdecirc(0,-0.10,0.03,'C1');
 pderect([0 0.5 0.5 -0.5],'R1');
 set(findobj(get(pde_fig,'Children'),'Tag','PDEEval'),'String','R1')
 
