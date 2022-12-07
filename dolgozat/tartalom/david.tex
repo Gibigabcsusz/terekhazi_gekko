@@ -45,4 +45,28 @@ Impedancia:
     Z = \frac{U}{I} = \frac{jw\psi}{I}
 \end{align}
 
+\section{A gömb méret változása és hiánya okozta Impedancia változás}
 
+\subsection{A földet tekintsük szigetelőnek}
+
+peremfeltételek mindenhol : h = 1, r=0\\
+Tekercs PDE: c = 1./(4*pi*1e-7)./x ; a = 0.0; f = 1/(0.05*0.02) ; ELIPTIC \\
+Levegő PDE : c = 1./x./(4*pi*1e-7) ; a = 0.0; f = 0; ELIPTIC \\
+Föld PDE:    c = 1./x./(4*pi*1e-7) ; a = 0.0; f = 0; ELIPTIC \\
+Gömb PDE:    c = 1./x./(4*pi*1e-7) ; a = j*2*pi*500*35e6./x; f = 0; ELIPTIC \\
+
+Tekercs impedanciája gömb nélkül:\\
+Z0 = 0.0000e+00 + 1.2193e+03i\\
+
+Tekercs impedanciája gömbbel:\\
+átmérő: 0.023 \\
+távolság: -0.10 \\
+Z0 = 7.9215e-02 + 1.2189e+03i\\
+
+\subsection{A földet tekintsük vezetőnek (kezdetleges)}
+$\sigma = 1 S/m$\\
+peremfeltételek mindenhol : h = 1, r=0\\
+Tekercs PDE: c = 1./(4*pi*1e-7)./x ; a = 0.0; f = 1/(0.05*0.02) ; ELIPTIC \\
+Levegő PDE : c = 1./x./(4*pi*1e-7) ; a = 0.0; f = 0; ELIPTIC \\
+Föld PDE:    c = 1./x./(4*pi*1e-7) ; a = j*2*pi*500./x*1; f = 0; ELIPTIC \\
+Gömb PDE:    c = 1./x./(4*pi*1e-7) ; a = j*2*pi*500*35e6./x; f = 0; ELIPTIC \\
