@@ -27,13 +27,22 @@ A tekercs homogenizálásával számítható tekercs fluxus:
     \frac{N}{F} \int_{F} 2 \pi r_k A_{\varphi,k} \,dF
 \end{align}
 
-az integrál egyszerűen közelíthatő a PDE megoldásából, a háromszöghálóra felírt
+az integrál egyszerűen közelíthatő a FEM megoldásából, a háromszöghálóra felírt
 integrál közelítő összeggel.
 
-A kiszámított fluxusból már egyszrűen számítható a tekercs ön és kölcsönös indukciója is.
+A kiszámított fluxusból már egyszrűen számítható a tekercs impedanciája is.
+
+Kapocs feszültség:
 \begin{align}
-    \psi = Z_1 I_1 + Z_2 I_2 \\
-    Z_1 = \frac{\psi}{I_1}   \\
-    Z_2 = \frac{\psi}{I_2}
+    U = jw\psi
 \end{align}
+Tekercs árama:
+\begin{align}
+    I = J_{\varphi} * \frac{F}{N}
+\end{align}
+Impedancia:
+\begin{align}
+    Z = \frac{U}{I} = \frac{jw\psi}{I}
+\end{align}
+
 

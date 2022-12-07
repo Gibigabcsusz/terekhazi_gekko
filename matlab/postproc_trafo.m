@@ -8,10 +8,13 @@ area = pdetrg(p,t);
 
 
 N = 2000; % menetszam
-F = 600; %[mm2] tekercs keresztmetszet
+F = 0.05*0.02; %[m2] tekercs keresztmetszet
+w = 2*pi*500;
+Jphi = 1/(0.05*0.02);
 
 indCoil = find(t(4,:) == 1); %terkercs tartomanya
 
 Psi = 2*N/F*sum( 2*pi*rAphi_tri(indCoil).*area(indCoil) );
-
-Z0 = Psi/1 %[mH]
+U = (1i*w*Psi);
+I = Jphi *(F/N);
+Z0 = U/I %[mH]
