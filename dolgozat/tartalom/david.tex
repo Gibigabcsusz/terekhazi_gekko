@@ -1,40 +1,39 @@
 \section{Impedancia kiszámítása $rA_{\varphi}$ értékekből}
-
-
+%
 A fluxusból tudunk következtetni a tekercs impedanciájára. A tekercs fluxusát
 egyszerűen ki lehet számolni a PDE megoldásának eredményeként kapott háromszögekből.\\
-
+%
 Egy menetre számított fluxus számítása:
-
+%
 \begin{align}
-    \psi \triangleq \int_{s}^{}  \vec{B} \,ds
-    \rightarrow  \psi = \int_{s} rot(\vec{A}) \,ds
+    \Psi \triangleq \int_{s}^{}  \vec{B} \,ds
+    \rightarrow  \Psi = \int_{s} rot(\vec{A}) \,ds
     = \oint_L \vec{A} \,dl
 \end{align}
-
+%
 Ebből már meg tudjuk határozni, hogy a teljes tekercs fluxusát, amihez tudni kell még a
 tekercs menetszámát(N) és a tekercs keresztmetsztét (F) amit a feladat meg adott.
-
+%
 Tekercs Fluxus számítása:
 \begin{align}
-    \psi = \sum_{k = 1}^{N}  \psi_k = \sum_{k = 1}^{N} \oint_{L_k} \vec{A} \,dl
+    \Psi = \sum_{k = 1}^{N}  \Psi_k = \sum_{k = 1}^{N} \oint_{L_k} \vec{A} \,dl
     = \sum_{k = 1}^{N} 2 \pi r_k A_{\varphi,k}
 \end{align}
-
+%
 A tekercs homogenizálásával számítható tekercs fluxus:
 \begin{align}
-    \psi = \frac{1}{\Delta} \sum_{k=1}^N  2 \pi r_k A_{\varphi,k} \Delta F \approx
+    \Psi = \frac{1}{\Delta} \sum_{k=1}^N  2 \pi r_k A_{\varphi,k} \Delta F \approx
     \frac{N}{F} \int_{F} 2 \pi r_k A_{\varphi,k} \,dF
 \end{align}
-
+%
 az integrál egyszerűen közelíthatő a FEM megoldásából, a háromszöghálóra felírt
 integrál közelítő összeggel.
-
+%
 A kiszámított fluxusból már egyszrűen számítható a tekercs impedanciája is.
-
-Kapocs feszültség:
+%
+Kapocsfeszültség:
 \begin{align}
-    U = jw\psi
+    U = jw\Psi
 \end{align}
 Tekercs árama:
 \begin{align}
@@ -42,22 +41,42 @@ Tekercs árama:
 \end{align}
 Impedancia:
 \begin{align}
-    Z = \frac{U}{I} = \frac{jw\psi}{I}
+    Z = \frac{U}{I} = \frac{jw\Psi}{I}
 \end{align}
-
-\section{A gömb méret változása és hiánya okozta Impedancia változás}
-
+%
+\section{A gömb méretének és mélységének változtatása}
+%
 \subsection{A földet tekintsük szigetelőnek}
-
-peremfeltételek mindenhol : h = 1, r=0\\
-Tekercs PDE: c = 1./(4*pi*1e-7)./x ; a = 0.0; f = 1/(0.05*0.02) ; ELIPTIC \\
-Levegő PDE : c = 1./x./(4*pi*1e-7) ; a = 0.0; f = 0; ELIPTIC \\
-Föld PDE:    c = 1./x./(4*pi*1e-7) ; a = 0.0; f = 0; ELIPTIC \\
-Gömb PDE:    c = 1./x./(4*pi*1e-7) ; a = j*2*pi*500*35e6./x; f = 0; ELIPTIC \\
-
-Tekercs impedanciája gömb nélkül: Z0 = 0.0000e+00 + 1.2193e+03i\\
-
-Tekercs impedanciája gömbbel:\\
+%
+A pdetool-ban megadott PDE összetevők:\\
+\vspace{0.2cm}
+\begin{center}
+\begin{tabular}{|l||c|c|c|}
+    \hline
+                    & \verb|c|                 & \verb|a|                   & \verb|f| \\
+    \hline
+    \hline
+    Tekercs      & \verb|1./(4*pi*1e-7)./x| & \verb|0|                   & \verb|1/(0.05*0.02)| \\
+    \hline
+    Levegő       & \verb|1./(4*pi*1e-7)./x| & \verb|0|                   & \verb|0| \\
+    \hline
+    Gömb         & \verb|1./(4*pi*1e-7)./x| & \verb|0|                   & \verb|0| \\
+    \hline
+    Talaj        & \verb|1./(4*pi*1e-7)./x| & \verb|j*2*pi*500*35e6./x|  & \verb|0| \\
+    \hline
+\end{tabular}\\
+\end{center}
+\vspace{0.5cm}
+A peremeken mindenhol az \verb|1*u=0| Dirichlet-peremfeltételt adtuk meg.
+%
+Tekercs impedanciája gömb nélkül:
+\begin{align}
+    Z_0 = 0 + 1.2193\times10^3j \quad\Omega
+\end{align}
+%
+A tekercs impedanciája gömbbel, különböző paraméterekkel $[\Omega]$:
+\vspace{0.2cm}
+\begin{center}
 \begin{tabular}{|c|c|c|c|}
     \hline
     \diagbox{r[m]}{d[m]} & 0.08                     & 0.13                     & 0.18                     \\
@@ -70,23 +89,47 @@ Tekercs impedanciája gömbbel:\\
     0.05                 &                          & 3.1053e-01 + 1.2171e+03j &                          \\
     \hline
 \end{tabular}\\
-
+\end{center}
+\vspace{0.5cm}
+%
 A távolság csökentésével illetve a gömb átmérő csökkentésével csökken az impedancia reális
 része míg a komplex szinte változatlan marad. Azaz a tekercsnek a gömb megjelenésével
 lessz ellenállása is. Az ellenállás  nagysága pedig attól függ, hogy milyen távol van a gömb
 a tekercstől és a gömb méretétől.
-
-
-\subsection{A földet tekintsük vezetőnek}
-$\sigma = 1 S/m$\\
-peremfeltételek mindenhol : h = 1, r=0\\
-Tekercs PDE: c = 1./(4*pi*1e-7)./x ; a = 0.0; f = 1/(0.05*0.02) ; ELIPTIC \\
-Levegő PDE : c = 1./x./(4*pi*1e-7) ; a = 0.0; f = 0; ELIPTIC \\
-Föld PDE:    c = 1./x./(4*pi*1e-7) ; a = j*2*pi*500./x*1; f = 0; ELIPTIC \\
-Gömb PDE:    c = 1./x./(4*pi*1e-7) ; a = j*2*pi*500*35e6./x; f = 0; ELIPTIC \\
-
-Tekercs impedanciája gömb nélkül: Z0 = 6.6401e-04 + 1.2193e+03i\\
-
+%
+\subsection{A földet tekintsük rossz vezetőnek}
+\begin{align}
+    \sigma = 1 S/m
+\end{align}
+A pdetool-ban megadott PDE összetevők:\\
+\vspace{0.2cm}
+\begin{center}
+\begin{tabular}{|l||c|c|c|}
+    \hline
+                    & \verb|c|                 & \verb|a|                   & \verb|f| \\
+    \hline
+    \hline
+    Tekercs      & \verb|1./(4*pi*1e-7)./x| & \verb|0|                   & \verb|1/(0.05*0.02)| \\
+    \hline
+    Levegő       & \verb|1./(4*pi*1e-7)./x| & \verb|0|                   & \verb|0| \\
+    \hline
+    Gömb         & \verb|1./(4*pi*1e-7)./x| & \verb|j*2*pi*500./x*1|     & \verb|0| \\
+    \hline
+    Talaj        & \verb|1./(4*pi*1e-7)./x| & \verb|j*2*pi*500*35e6./x|  & \verb|0| \\
+    \hline
+\end{tabular}\\
+\end{center}
+\vspace{0.5cm}
+A peremeken mindenhol az \verb|1*u=0| Dirichlet-peremfeltételt adtuk meg.
+%
+A tekercs impedanciája gömb nélkül: % + 
+\begin{align}
+    Z_0 = 6.6401\times10^{-4} + 1.2193\times10^3j \quad\Omega
+\end{align}
+A tekercs impedanciája gömbbel, különböző paraméterekkel $[\Omega]$:
+%
+\vspace{0.2cm}
+\begin{center}
 \begin{tabular}{|c|c|c|c|}
     \hline
     \diagbox{r[m]}{d[m]} & 0.08                     & 0.13                     & 0.18                     \\
@@ -99,5 +142,7 @@ Tekercs impedanciája gömb nélkül: Z0 = 6.6401e-04 + 1.2193e+03i\\
     0.05                 &                          & 3.1112e-01 + 1.2171e+03j &                          \\
     \hline
 \end{tabular}\\
-
-A tapasztalat szinte ugyan az mint amikor a földet szigetelőnek tekintjük azzal a különbséggel, hogy a már a gömbnélkül is van reális része az impedanciának.
+\end{center}
+\vspace{0.5cm}
+%
+A tapasztalat szinte ugyanaz, mint amikor a földet szigetelőnek tekintjük, azzal a különbséggel, hogy a már a gömb nélkül is van valós része az impedanciának.

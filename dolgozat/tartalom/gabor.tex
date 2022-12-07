@@ -1,17 +1,35 @@
-\section{Szilágyi Gábor szekciója}
-Szeretném én az egyenletek rendezgetését MATLAB-ba tuszakolását megcsinálni.
-
 A feladat megoldásához az $\vec{A}-\Phi, \vec{A}$ formalizmust használjuk, mert az előadáson bemutatott indukciós főzőlapos példa alapján ezzel a megközelítéssel egy jól kezelhető parciális differenciálegyenlet-rendszert kapunk, amit a PDEtool segítségével megoldhatunk.
 \begin{align}
     \vec{B} = \rot \vec{A}
 \end{align}
-
 A peremfeltételekről a következőket lehet tudni:
 \begin{align}
     B_n(\vec{r}) &= 0, \quad \vec{r} \in \Gamma_Z\\
     B_n(\vec{r}) &= 0, \quad \vec{r} \in \Gamma_L \cup \Gamma_T
 \end{align}
-A $B_n$ normális mágneses indukció a $\Gamma_Z$ peremen a szimmetria miatt lesz 0, a $\Gamma_L \cup \Gamma_T$ távoli peremeken pedig a relatíve nagy távolság miatt.
-% \begin{itemize}
-    % \item A $\Gamma_Z$ peremeken $\vec{J}_n=0$ és $B_n=0$ a hengerszimmetria miatt.
-% \end{itemize}
+A $B_n$ normális mágneses indukció a $\Gamma_Z$ peremen a szimmetria miatt lesz 0, a $\Gamma_L \cup \Gamma_T$ távoli peremeken pedig a nagy távolság miatt lesz közel 0, amit pontosan 0 értékkel modellezünk.
+\section{A PDE és megadása pdetool-ban}
+A tartományokra vonatkozó parciális differenciálegyenlet:
+\begin{equation}
+    -\left(\dfrac{\partial}{\partial r}\dfrac{1}{r\mu}\dfrac{\partial(rA_{\varphi})}{\partial r}+\dfrac{\partial}{\partial z}\dfrac{1}{r\mu}\dfrac{\partial(rA_{\varphi})}{\partial z}\right) + j\omega\sigma A_{\varphi} = J_{i,\varphi}
+\end{equation}
+Ezt a következő helyettesítésekkel lehet MATLAB-ban (pdetool-ban) megadni:
+\begin{equation}
+    \begin{aligned}
+        rA_{\varphi}\quad\rightarrow&\quad\verb|u|\\
+        r\quad\rightarrow&\quad\verb|x|\\
+        z\quad\rightarrow&\quad\verb|y|
+    \end{aligned}
+\end{equation}
+A használt elliptikus PDE séma a következő:
+\begin{equation}
+    \verb|-div(c*grad(u))+a*u=f|
+\end{equation}
+Eszerint az egyes paraméterek behelyettesítési értékei:
+\begin{equation}
+    \begin{aligned}
+        \verb|c|\quad=&\quad\dfrac{1}{r\mu}\\
+        \verb|a|\quad=&\quad\dfrac{j\omega\sigma}{r}\\
+        \verb|f|\quad=&\quad J_{i,\varphi}
+    \end{aligned}
+\end{equation}
