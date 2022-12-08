@@ -1,0 +1,1 @@
+femkereses_foldszigetelo_I(-0.11,0.1)
