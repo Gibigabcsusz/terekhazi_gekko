@@ -1,5 +1,21 @@
 %% Foldszigetelo nincs gomb
 % Solve PDE and Visualize FEM solution
+femkereses_foldszigetelo_0_konv_R
+% GET PDE PARAM
+get_PDEparam
+% Calculate impedance
+Z0_konv_R = postproc_trafo(p,t,e,u)
+
+%% Foldszigetelo nincs gomb
+% Solve PDE and Visualize FEM solution
+femkereses_foldszigetelo_0_konv_mesh
+% GET PDE PARAM
+get_PDEparam
+% Calculate impedance
+Z0_konv_mesh = postproc_trafo(p,t,e,u)
+
+%% Foldszigetelo nincs gomb
+% Solve PDE and Visualize FEM solution
 femkereses_foldszigetelo_0
 % GET PDE PARAM
 get_PDEparam

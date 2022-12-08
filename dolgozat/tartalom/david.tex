@@ -48,6 +48,9 @@ Impedancia:
 %
 \subsection{A földet tekintsük szigetelőnek}
 %
+\begin{align}
+    \sigma_t\quad=\quad\qty{0}{\siemens\per\metre}
+\end{align}
 A pdetool-ban megadott PDE összetevők:\\
 \vspace{0.2cm}
 \begin{center}
@@ -56,7 +59,7 @@ A pdetool-ban megadott PDE összetevők:\\
                     & \verb|c|                 & \verb|a|                   & \verb|f| \\
     \hline
     \hline
-    Tekercs      & \verb|1./(4*pi*1e-7)./x| & \verb|0|                   & \verb|1/(0.05*0.02)| \\
+    Tekercs      & \verb|1./(4*pi*1e-7)./x| & \verb|0|                   & \verb|2000/(0.05*0.02)| \\
     \hline
     Levegő       & \verb|1./(4*pi*1e-7)./x| & \verb|0|                   & \verb|0| \\
     \hline
@@ -67,13 +70,26 @@ A pdetool-ban megadott PDE összetevők:\\
 \end{tabular}\\
 \end{center}
 \vspace{0.5cm}
-A peremeken mindenhol az \verb|1*u=0| Dirichlet-peremfeltételt adtuk meg.
+A peremeken mindenhol az \verb|1*u=0| Dirichlet-peremfeltételt adtuk meg. Ez egyben $A_{\varphi}$-re is Dirichlet-peremfeltételt jelent, ami miatt a peremeken $B_n=0$.\\[3ex]
 %
 Tekercs impedanciája gömb nélkül:
 \begin{align}
-    Z_0 = 0 + 1.2193\times10^3j \quad\Omega
+    Z_0\quad=\quad0 + 1.2157\times10^3j\quad\Omega
 \end{align}
 %
+A szimulációhoz konvergenciavizsgálatot végeztünk, aminél megvizsgáltuk a ritkább háló és a közelibb peremek hatását. A fenti alap esetben a hálót háromszor finomítottuk, illetve a szimulációs tartomány méretparamétere (a bal és jobb oldali perem távolsága) $R=\qty{0.5}{\metre}$ volt. Megvizsgáltuk az alap elrendezést szigetelő talajjal és gömb nélkül, de csak kétszeri hálófinomítás mellett. Így a tekercs impedanciájára a következő adódott:
+\begin{align}
+    Z_{0,mesh}\quad=&\quad0 + 1.2185\times10^3j\quad\Omega\\
+    \dfrac{|Z_{0,mesh}-Z_0|}{|Z_0|}\quad=&\quad0.0023
+\end{align}
+%
+Ezután megvizsgáltuk ugyanazt a kiinduló elrendezést, csak $R=\qty{0.3}{\metre}$ választással. Erre a következő tekercs induktivitás adódott:
+\begin{align}
+    Z_{0,R}\quad=&\quad0 + 1.2185\times10^3j\quad\Omega\\
+    \dfrac{|Z_{0,R}-Z_0|}{|Z_0|}\quad=&\quad0.0048
+\end{align}
+%
+Mindkét relatív hiba $1\%$ alatti, így elfogadhatjuk a részletesebb modellből kapott eredményeket, tehát innentől $R=0.5$ és háromszori hálófinomítást használunk.\\[3ex]
 A tekercs impedanciája gömbbel, különböző paraméterekkel $[\Omega]$:
 \vspace{0.2cm}
 \begin{center}
@@ -82,11 +98,28 @@ A tekercs impedanciája gömbbel, különböző paraméterekkel $[\Omega]$:
     \diagbox{r[m]}{d[m]} & 0.08                     & 0.13                     & 0.18                     \\
     \hline
     \hline
-    0.01                 &                          & 5.4073e-03 + 1.2192e+03j &                          \\
+    0.01                 &                          & 5.4765e-03 + 1.2154e+03j &                          \\
     \hline
-    0.03                 & 6.5651e-01 + 1.2163e+03j & 7.9215e-02 + 1.2189e+03j & 1.4745e-02 + 1.2192e+03j \\
+    0.03                 & 6.7525e-01 + 1.2124e+03j & 8.5124e-02 + 1.2153e+03j & 1.5855e-02 + 1.2156e+03j \\
     \hline
-    0.05                 &                          & 3.1053e-01 + 1.2171e+03j &                          \\
+    0.05                 &                          & 3.5212e-01 + 1.2133e+03j &                          \\
+    \hline
+\end{tabular}\\
+\end{center}
+\vspace{0.5cm}
+%
+Innen tehát az impedancia megváltozása ($\Delta Z$) a gömb nálküli esethez képest [$\Omega$]:
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+    \hline
+    \diagbox{r[m]}{d[m]} & 0.08                     & 0.13                     & 0.18                     \\
+    \hline
+    \hline
+    0.01                 &                          & 0.0055 - 0.3430j &                          \\
+    \hline
+    0.03                 & 0.6753 - 3.3430j & 0.0851 - 0.4430j & 0.0159 - 0.1430i \\
+    \hline
+    0.05                 &                          & 0.3521 - 2.4430i &                          \\
     \hline
 \end{tabular}\\
 \end{center}
@@ -99,7 +132,7 @@ a tekercstől és a gömb méretétől.
 %
 \subsection{A földet tekintsük rossz vezetőnek}
 \begin{align}
-    \sigma = 1 S/m
+    \sigma_t\quad=\quad\qty{1}{\siemens\per\metre}
 \end{align}
 A pdetool-ban megadott PDE összetevők:\\
 \vspace{0.2cm}
@@ -120,11 +153,11 @@ A pdetool-ban megadott PDE összetevők:\\
 \end{tabular}\\
 \end{center}
 \vspace{0.5cm}
-A peremeken mindenhol az \verb|1*u=0| Dirichlet-peremfeltételt adtuk meg.
+A peremeken mindenhol az \verb|1*u=0| Dirichlet-peremfeltételt adtuk meg.\\[3ex]
 %
 A tekercs impedanciája gömb nélkül: % + 
 \begin{align}
-    Z_0 = 6.6401\times10^{-4} + 1.2193\times10^3j \quad\Omega
+    Z_0\quad=\quad6.6340\times10^{-4} + 1.2157\times10^3j \quad\Omega
 \end{align}
 A tekercs impedanciája gömbbel, különböző paraméterekkel $[\Omega]$:
 %
@@ -135,14 +168,100 @@ A tekercs impedanciája gömbbel, különböző paraméterekkel $[\Omega]$:
     \diagbox{r[m]}{d[m]} & 0.08                     & 0.13                     & 0.18                     \\
     \hline
     \hline
-    0.01                 &                          & 6.0710e-03 + 1.2192e+03j &                          \\
+    0.01                 &                          & 6.1399e-03 + 1.2154e+03j &                          \\
     \hline
-    0.03                 & 6.5713e-01 + 1.2163e+03j & 7.9866e-02 + 1.2189e+03j & 1.5405e-02 + 1.2192e+03j \\
+    0.03                 & 6.7587e-01 + 1.2124e+03j & 8.5774e-02 + 1.2153e+03j & 1.6515e-02 + 1.2156e+03j \\
     \hline
-    0.05                 &                          & 3.1112e-01 + 1.2171e+03j &                          \\
+    0.05                 &                          & 3.5271e-01 + 1.2133e+03j &                          \\
     \hline
 \end{tabular}\\
 \end{center}
 \vspace{0.5cm}
 %
-A tapasztalat szinte ugyanaz, mint amikor a földet szigetelőnek tekintjük, azzal a különbséggel, hogy a már a gömb nélkül is van valós része az impedanciának.
+Innen tehát az impedancia megváltozása ($\Delta Z$) a gömb nálküli esethez képest [$\Omega$]:
+\vspace{0.2cm}
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+    \hline
+    \diagbox{r[m]}{d[m]} & 0.08                     & 0.13                     & 0.18                     \\
+    \hline
+    \hline
+    0.01                 &                          & 0.0055 - 0.3430j &                          \\
+    \hline
+    0.03                 & 0.6752 - 3.3430j & 0.0851 - 0.4430j & 0.0159 - 0.1430j \\
+    \hline
+    0.05                 &                          & 0.3520 - 2.4430j &                          \\
+    \hline
+\end{tabular}\\
+\end{center}
+\vspace{0.5cm}
+%
+A tapasztalat szinte ugyanaz, mint amikor a földet szigetelőnek tekintjük, azzal a különbséggel, hogy a már a gömb nélkül is van valós része az impedanciának. Ez azért logikus, mert a véges vezetőképességű talajban létrejövő örvényáramok miatti ohmos veszteség jelenik meg a tekercs impedanciájának valós részeként. 
+\subsection{A földet tekintsük jó vezetőnek}
+A talaj vezetőképességét a volframéval megegyezőnek választottuk, mert az körülbelül fele a gömbre vonatkozónak, ami pedig az alumíniuménak felel meg.
+\begin{align}
+    \sigma_t\quad=\quad\qty{1.82e7}{\siemens\per\metre}
+\end{align}
+A pdetool-ban megadott PDE összetevők:\\
+\vspace{0.2cm}
+\begin{center}
+\begin{tabular}{|l||c|c|c|}
+    \hline
+                    & \verb|c|                 & \verb|a|                   & \verb|f| \\
+    \hline
+    \hline
+    Tekercs      & \verb|1./(4*pi*1e-7)./x| & \verb|0|                   & \verb|1/(0.05*0.02)| \\
+    \hline
+    Levegő       & \verb|1./(4*pi*1e-7)./x| & \verb|0|                   & \verb|0| \\
+    \hline
+    Gömb         & \verb|1./(4*pi*1e-7)./x| & \verb|j*2*pi*500./x*1.82e7|     & \verb|0| \\
+    \hline
+    Talaj        & \verb|1./(4*pi*1e-7)./x| & \verb|j*2*pi*500*35e6./x|  & \verb|0| \\
+    \hline
+\end{tabular}\\
+\end{center}
+\vspace{0.5cm}
+A peremeken mindenhol az \verb|1*u=0| Dirichlet-peremfeltételt adtuk meg.\\[3ex]
+%
+A tekercs impedanciája gömb nélkül: % + 
+\begin{align}
+    Z_0\quad=\quad1.3793\times10^{1} + 1.0905\times10^3j \quad\Omega
+\end{align}
+A tekercs impedanciája gömbbel, különböző paraméterekkel $[\Omega]$:
+%
+\vspace{0.2cm}
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+    \hline
+    \diagbox{r[m]}{d[m]} & 0.08                     & 0.13                     & 0.18                     \\
+    \hline
+    \hline
+    0.01                 &                          & 1.3922e+01 + 1.0902e+03j &                          \\
+    \hline
+    0.03                 & 1.3925e+01 + 1.0900e+03j & 1.3953e+01 + 1.0903e+03j & 1.3872e+01 + 1.0904e+03j \\
+    \hline
+    0.05                 &                          & 1.4064e+01 + 1.0901e+03j &                          \\
+    \hline
+\end{tabular}\\
+\end{center}
+\vspace{0.5cm}
+%
+Innen tehát az impedancia megváltozása ($\Delta Z$) a gömb nálküli esethez képest [$\Omega$]:
+\vspace{0.2cm}
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+    \hline
+    \diagbox{r[m]}{d[m]} & 0.08                     & 0.13                     & 0.18                     \\
+    \hline
+    \hline
+    0.01                 &                          & 0.1292 - 0.2737i &                          \\
+    \hline
+    0.03                 & 0.1322 - 0.4737i & 0.1602 - 0.1737j & 0.0792 - 0.0737i \\
+    \hline
+    0.05                 &                          & 0.2712 - 0.3737j &                          \\
+    \hline
+\end{tabular}\\
+\end{center}
+\vspace{0.5cm}
+%
+Az eredményekből arra lehet következtetni, hogy ha elég jó vezetőképességű a talaj, akkor az eltemetett jobb vezetőképességű gömb miatti impedancia megváltozás kisebb, mint a szigetelő vagy rossz vezetőképességű talaj esetén. Ha a talaj rossz vezető, akkor a gömb hatására megjelenő veszteség felhasználható detekcióra egy nagy jósági tényezőjű rezgőkör jósági tényezőjének lerontására, ami detektálható. Ellenben jó vezető talajnál már a tekercs impedanciájának valós része a gömb nélkül is számottevő, így a detekció sokkal nehezebb.
